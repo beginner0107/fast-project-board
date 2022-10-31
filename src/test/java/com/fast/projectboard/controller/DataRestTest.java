@@ -69,6 +69,7 @@ public class DataRestTest {
 
     }
 
+    
     @DisplayName("[api] 댓글 리스트 조회")
     @Test
     void givenNothing_whenRequestingArticleComments_thenReturnArticleCommentsJsonResponse() throws Exception {
