@@ -73,6 +73,7 @@ class JpaRepositoryTest {
         assertThat(savedArticle).hasFieldOrPropertyWithValue("hashtag", updatedHashtag);
     }
 
+    
     @DisplayName("delete 테스트")
     @Test
     void givenTestData_whenDeleting_thenWorksFine(){
