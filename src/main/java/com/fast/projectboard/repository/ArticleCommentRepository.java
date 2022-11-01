@@ -1,10 +1,6 @@
 package com.fast.projectboard.repository;
 
 import com.fast.projectboard.domain.ArticleComment;
-<<<<<<< HEAD
-import com.fast.projectboard.domain.QArticle;
-=======
->>>>>>> #1-api
 import com.fast.projectboard.domain.QArticleComment;
 import com.querydsl.core.types.dsl.DateTimeExpression;
 import com.querydsl.core.types.dsl.StringExpression;
@@ -28,8 +24,4 @@ public interface ArticleCommentRepository extends
         bindings.bind(root.createdAt).first(DateTimeExpression::eq);
         bindings.bind(root.createdBy).first(StringExpression::containsIgnoreCase);
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> #1-api
