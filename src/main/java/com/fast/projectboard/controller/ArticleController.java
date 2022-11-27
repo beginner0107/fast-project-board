@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
-
 /**
  * /articles
  * /articles/{article-id}
@@ -49,7 +47,7 @@ public class ArticleController {
     {
         ArticleWithCommentsResponse article = ArticleWithCommentsResponse.from(articleService.getArticle(articleId));
         map.addAttribute("article", article);
-        map.addAttribute("articleComments", article.articleCommentsResponse());
+        map.addAttribute("articleComments", article.articleCommentResponse());
 
         return "articles/detail";
     }
