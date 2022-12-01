@@ -8,7 +8,6 @@ import com.fast.projectboard.service.PaginationService;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -19,11 +18,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.ui.ModelMap;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import static org.mockito.ArgumentMatchers.*;

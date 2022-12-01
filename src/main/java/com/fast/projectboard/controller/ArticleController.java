@@ -19,12 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-/**
- * /articles
- * /articles/{article-id}
- * /articles/search
- * /articles/search-hashtag
- */
 @RequiredArgsConstructor
 @RequestMapping("/articles")
 @Controller
