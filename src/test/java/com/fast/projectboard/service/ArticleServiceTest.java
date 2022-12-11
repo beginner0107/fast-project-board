@@ -19,7 +19,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.test.util.ReflectionTestUtils;
 
 import javax.persistence.EntityNotFoundException;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -303,11 +302,7 @@ class ArticleServiceTest {
                 "password",
                 "uno@mail.com",
                 "Uno",
-                "This is memo",
-                LocalDateTime.now(),
-                "uno",
-                LocalDateTime.now(),
-                "uno"
+                "This is memo"
         );
     }
 

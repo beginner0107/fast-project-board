@@ -148,11 +148,7 @@ class ArticleCommentServiceTest {
                 "password",
                 "uno@mail.com",
                 "Uno",
-                "This is memo",
-                LocalDateTime.now(),
-                "uno",
-                LocalDateTime.now(),
-                "uno"
+                "This is memo"
         );
     }
 
