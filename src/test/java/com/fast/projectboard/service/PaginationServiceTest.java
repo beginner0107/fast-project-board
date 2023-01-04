@@ -63,8 +63,4 @@ class PaginationServiceTest {
         // Then
         assertThat(barLength).isEqualTo(5);
     }
-
-    @Test
-    void g(){
-    }
 }
