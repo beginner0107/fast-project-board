@@ -27,6 +27,12 @@ spring:
     base-path: /api
     detection-strategy: annotated
   thymeleaf3.decoupled-logic: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 
-
-
+management:
+  security:
+    enabled: false
+    basic.enabled: false
+  health.db.enabled: false
