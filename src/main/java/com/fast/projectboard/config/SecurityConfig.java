@@ -31,9 +31,7 @@ public class SecurityConfig {
                         .anyRequest().authenticated()
                 )
                 .formLogin().and()
-                .logout()
-                        .logoutUrl("/")
-                        .and()
+                .logout(logout -> logout.logoutSuccessUrl("/"))
                 .build();
     }
 
