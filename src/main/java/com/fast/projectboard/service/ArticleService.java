@@ -5,6 +5,7 @@ import com.fast.projectboard.domain.UserAccount;
 import com.fast.projectboard.domain.constant.SearchType;
 import com.fast.projectboard.dto.ArticleDto;
 import com.fast.projectboard.dto.ArticleWithCommentsDto;
+import com.fast.projectboard.repository.ArticleCommentRepository;
 import com.fast.projectboard.repository.ArticleRepository;
 import com.fast.projectboard.repository.UserAccountRepository;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,7 @@ import java.util.List;
 @Service
 @Slf4j
 public class ArticleService {
+    private final ArticleCommentRepository articleCommentRepository;
 
     private final ArticleRepository articleRepository;
     private final UserAccountRepository userAccountRepository;
@@ -64,8 +66,7 @@ public class ArticleService {
         try {
             Article article = articleRepository.getReferenceById(articleId);
             UserAccount userAccount = userAccountRepository.getReferenceById(dto.userAccountDto().userId());
-
-            if(article.getUserAccount().equals(userAccount)) {
+            if(article.getUserAccount().getUserId().equals(userAccount.getUserId())) {
                 if(dto.title() != null) article.setTitle(dto.title());
                 if(dto.content() != null) article.setContent(dto.content());
                 article.setHashtag(dto.hashtag());
