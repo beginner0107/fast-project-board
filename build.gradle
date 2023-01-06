@@ -67,3 +67,9 @@ sourceSets{
 clean{
 	delete file(generated)
 }
+
+jar {
+	manifest {
+		attributes('Main-Class' : 'com.fast.projectboard.FastProjectBoardApplication')
+	}
+}
