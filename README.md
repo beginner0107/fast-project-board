@@ -12,6 +12,10 @@
 - [X] 회원인 경우 댓글을 생성/삭제할 수 있어야 한다.
 - [X] 시큐리티를 통해 인증/인가
 
+# 개발 추가요건
+- [X] 단위테스트
+- [X] 통합테스트
+
 # 사용한 기술 & 개발 환경
 - <b>Spring Boot 2.7.5</b>
 - <b>Java 17</b>
@@ -94,7 +98,7 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
     }
 ```
 
-# QueryDsl를 도입
+## QueryDsl를 도입
 기존에 `mybatis`에서 동적쿼리를 작성하였는데, JPA에서는 어떻게 구현해야할 지 어려움이 있었습니다.
 
 JPA에서는 다른 방법도 있었지만, QueryDsl을 사용하는게 가장 효율적이라고 생각이 들어 사용하게 되었습니다.
@@ -111,7 +115,7 @@ public interface QuerydslPredicateExecutor<T> {
 ```
 `QuerydslPredicateExcutor` 인터페이스의 사용 방법은 간단합니다.
 ### `QuerydslPredicateExcutor` Example
-```
+```java
 public interface ArticleRepository extends
         JpaRepository<Article, Long>,
         QuerydslPredicateExecutor<Article>
@@ -137,6 +141,46 @@ public interface ArticleRepository extends
     }
 }
 
+```
+
+## thymeleaf3 decoupled logic 도입
+decoupled (분리된) logic은 thymeleaf 기능 중 하나입니다. 
+
+HTML과 XML 템플릿에서 순수 마크업과 로직이 들어간 부분을 분리시키는 기능입니다. 
+
+디자이너가 이해하기 쉽기에 유용하다고 볼 수 있습니다. 
+
+`decoupled logic`을 사용하기 위해서는 yml 파일에 설정을 추가해두고, `TymeleafConfig`를 구현하면 됩니다.
+
+### Decoupled Logic Example
+- 이렇게 설정을 하면 `th:` 이런 타임리프 코드들을 th.xml파일로 옮겨주어, html 파일에는 순수한 html 파일이 이루어지게 됩니다. 
+```yaml
+  thymeleaf3.decoupled-logic: true
+```
+
+```java
+@Configuration
+public class ThymeleafConfig {
+    @Bean
+    public SpringResourceTemplateResolver thymeleafTemplateResolver(
+            SpringResourceTemplateResolver defaultTemplateResolver,
+            Thymeleaf3Properties thymeleaf3Properties
+    ) {
+        defaultTemplateResolver.setUseDecoupledLogic(thymeleaf3Properties.isDecoupledLogic());
+
+        return defaultTemplateResolver;
+    }
+    @RequiredArgsConstructor
+    @Getter
+    @ConstructorBinding
+    @ConfigurationProperties("spring.thymeleaf3")
+    public static class Thymeleaf3Properties {
+        /**
+         * Use Thymeleaf 3 Decoupled Logic
+         */
+        private final boolean decoupledLogic;
+    }
+}
 ```
 
 # 데모 페이지
