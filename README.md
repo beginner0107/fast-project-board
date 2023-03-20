@@ -182,6 +182,20 @@ public class ThymeleafConfig {
     }
 }
 ```
+# Installation
+## Environment
+- spring.datasource.url: [IP][PORT][DB명칭]
+- spring.datasource.username: 이용할 유저이름
+- spring.datasource.password: 비밀번호
+- spring.datasource.driver-class-name: 사용할 DB Driver 
+```yaml
+spring:
+  datasource:
+    url: 
+    username: 
+    password: 
+    driver-class-name: 입력
+```
 
 # 데모 페이지
 * https://project-board.herokuapp.com/
